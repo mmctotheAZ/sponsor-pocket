@@ -54,8 +54,9 @@ app.use((req, res, next) => {
   }
 
   // Use PORT from environment variable for cloud deployment compatibility
-  const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
-  server.listen(port, "0.0.0.0", () => {
-    log(`Server running on port ${port}`);
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
   });
 })();
