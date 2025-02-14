@@ -87,12 +87,25 @@ export async function generateSponsorResponse(userMessage: string) {
       console.error("Failed to parse OpenAI response:", parseError);
       return getFallbackResponse();
     }
-  } catch (error) {
-    console.error("OpenAI API error:", error);
+} catch (parseError: unknown) {
+    console.error("Failed to parse OpenAI response:", parseError);
+
+    if (parseError instanceof SyntaxError) {
+        console.error("JSON parsing issue:", parseError.message);
+    }
+
     return getFallbackResponse();
-  }
 }
 
+} catch (error: unknown) {
+    console.error("OpenAI API error:", error);
+
+    if (error instanceof Error) {
+        console.error("Error details:", error.message);
+    }
+
+    return getFallbackResponse();
+}
 function getFallbackResponse() {
   // Get a random fallback response
   const fallbackResponse = FALLBACK_RESPONSES[Math.floor(Math.random() * FALLBACK_RESPONSES.length)];
