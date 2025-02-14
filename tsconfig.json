@@ -1,12 +1,12 @@
 {
   "include": ["client/src/**/*", "shared/**/*", "server/**/*", "index.ts"],
   "exclude": ["node_modules", "build", "**/*.test.ts"],
-  "compilerOptions": {
-    "outDir": "dist", 
+"compilerOptions": {
+    "outDir": "dist",
     "incremental": true,
     "tsBuildInfoFile": "./node_modules/typescript/tsbuildinfo",
-    "noEmit": false,
-    "module": "CommonJS",
+    "noEmit": true,  
+    "module": "ESNext",
     "strict": true,
     "lib": ["esnext", "dom", "dom.iterable"],
     "jsx": "preserve",
@@ -17,8 +17,7 @@
     "baseUrl": ".",
     "types": ["node", "vite/client"],
     "paths": {
-      "@/*": ["./client/src/*"],
-      "@shared/*": ["./shared/*"]
+        "@/*": ["./client/src/*"],
+        "@shared/*": ["./shared/*"]
     }
-  }
 }
