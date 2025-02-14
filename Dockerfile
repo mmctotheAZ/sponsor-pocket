@@ -1,8 +1,21 @@
+# Use Node.js as base image
 FROM node:18
+
+# Set working directory
 WORKDIR /app
+
+# Copy package.json and install dependencies
 COPY package.json package-lock.json ./
 RUN npm install
+
+# Copy all project files
 COPY . .
+
+# Build TypeScript files (creates the missing dist/ folder)
+RUN npm run build  
+
+# Expose the required port
 EXPOSE 8080
-CMD ["node", "dist/index.js"]  # Update this if your main entry file is different
-# Use Node.js LTS version
+
+# Start the app
+CMD ["node", "dist/index.js"]
