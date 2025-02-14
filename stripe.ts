@@ -36,7 +36,7 @@ export async function createPaymentIntent(productType: keyof typeof PRODUCTS) {
       throw new Error(`Invalid product type: ${productType}`);
     }
 
-    const intent = await stripe.paymentIntents.create({
+const intent = await stripe.paymentIntents.create({
       amount: product.price,
       currency: product.currency,
       metadata: {
