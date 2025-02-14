@@ -1,7 +1,8 @@
-import OpenAI from "openai";
+import { OpenAI } from "openai";
+const ai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
-// the newest OpenAI model is "gpt-4o" which was released May 13, 2024
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 const SYSTEM_PROMPT = `You are a compassionate recovery sponsor with over 30 years in AA, well-versed in the Big Book of Alcoholics Anonymous and the 12 Steps & 12 Traditions (known as the 12 & 12). Your role is to:
 
